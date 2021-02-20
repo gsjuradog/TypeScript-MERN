@@ -1,4 +1,4 @@
-./config.ts
+server/src/config.ts
 # Logs
 logs
 *.log
