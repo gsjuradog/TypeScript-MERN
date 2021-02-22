@@ -6,7 +6,7 @@ export default (db:string) => {
     mongoose
       .connect(db, {useNewUrlParser:true,  useUnifiedTopology: true })
       .then(()=>{
-        return console.log(`Connected to ${db}`)
+        return console.log(`Connected to MongoDB`)
       })
       .catch(error=>{
         console.log("Error while connecting to database: ", error)

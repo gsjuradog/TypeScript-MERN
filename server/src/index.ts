@@ -6,8 +6,9 @@ import config from './config';
 
 
 const app:Application = express();
-const port:number = 3003 || process.env.PORT;
-const db:string = `mongob://${config.MONGO_HOST}:${config.MONGO_PORT}/${config.MONGO_DATABASE}`;
+const port:number|string = config.SERVER_PORT;
+const hostname:string = config.HOST;
+const db:string = config.MONGO_ATLAS_URI_STRING || `mongodb://${config.HOST}:${config.MONGO_PORT}/${config.MONGO_DATABASE}`;
 
 connect(db);
 app.use(cors());
@@ -16,5 +17,5 @@ app.use(morgan('dev'));
 
 
 app.listen(port, ()=>{
-  console.log(`server listening on port ${port}`)
+  console.log(`server listening on http://${hostname}:${port}`)
 })
